@@ -1,0 +1,61 @@
+
+<mat-grid-list cols="10" rowHeight="2:1">
+
+  <mat-grid-tile class="f-2" [colspan]="4">
+    Date:
+    <small class="small-text">from </small>
+    <mat-form-field (mouseenter)="onHoverInput()">
+      <input type="datetime-local" matInput
+        [disabled]="inputDisabled"
+
+        [min]="dataDateMin"
+        [max]="dataDateMax"
+        id="meeting-time"
+        name="meeting-time" [(ngModel)]="dateModelMin"
+        (ngModelChange)="onChangeDateMin($event)"> </mat-form-field>
+    <small class="small-text"> to</small>
+    <mat-form-field (mouseenter)="onHoverInput()">
+      <input type="datetime-local" matInput
+        [disabled]="inputDisabled"
+
+        [min]="dataDateMin"
+        [max]="dataDateMax"
+        id="meeting-time"
+        name="meeting-time" [(ngModel)]="dateModelMax"
+        (ngModelChange)="onChangeDateMax($event)"> </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile class="f-1" [colspan]="2">
+    Entries:
+    <small class="small-text">from </small>
+    <mat-form-field (mouseenter)="onHoverSlider()">
+      <input (click)="disableInput()" [disabled]="disabledEntries" matInput
+        type="number"
+        [(ngModel)]="dataModelMin">
+    </mat-form-field>
+    <small class="small-text"> to</small>
+    <mat-form-field (mouseenter)="onHoverSlider()">
+      <input matInput (click)="disableInput()" [disabled]="disabledEntries"
+        type="number"
+        [(ngModel)]="dataModelMax">
+    </mat-form-field>
+
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="4" (click)="disableInput()"
+    (mouseenter)="onHoverSlider()">
+    <ng5-slider (valueChange)="onValueRangeChange($event)"
+      (highValueChange)=onHighRangeChange($event)
+      [(value)]="dataModelMin"
+      [(highValue)]="dataModelMax"
+      [options]="dataSliderOptions"></ng5-slider></mat-grid-tile>
+</mat-grid-list>
+
+<div style="display: block; padding: 1rem">
+  <canvas Chart
+    [chartType]="chartType"
+    [datasets]="chartDatasets"
+    [labels]="chartLabels"
+    [colors]="chartColors"
+    [options]="chartOptions"
+    [legend]="true">
+  </canvas>
+</div>

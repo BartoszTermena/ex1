@@ -1,0 +1,14 @@
+<div class="container">
+  <mat-tab-group animationDuration="0ms" [dynamicHeight]="true">
+    <mat-tab label="Temperature"> <app-temperature-chart></app-temperature-chart>
+    </mat-tab>
+    <mat-tab label="Humidity">
+      <app-humidity-chart></app-humidity-chart> </mat-tab>
+    <mat-tab label="Light"> <app-light-chart></app-light-chart> </mat-tab>
+    <mat-tab label="CO2"> <app-co2-chart></app-co2-chart> </mat-tab>
+    <mat-tab label="Humidity Ratio"> <app-humidity-ratio-chart></app-humidity-ratio-chart>
+    </mat-tab>
+    <mat-tab label="All Data"> <app-full-chart></app-full-chart> </mat-tab>
+  </mat-tab-group>
+
+</div>
